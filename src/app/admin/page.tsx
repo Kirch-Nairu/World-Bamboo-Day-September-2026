@@ -1,0 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
+const registrations = [
+  ["WBD26-0126", "Maria Santos", "ABC Cooperative", "Loboc", "3", "CONFIRMED", "NOT CHECKED IN"],
+  ["WBD26-0125", "Juan Dela Cruz", "—", "Tagbilaran", "1", "PENDING", "NOT CHECKED IN"],
+  ["WBD26-0124", "Ana Reyes", "Youth Green Network", "Bilar", "5", "CONFIRMED", "NOT CHECKED IN"],
+  ["WBD26-0123", "Pedro Flores", "Municipal Office", "Loay", "2", "REVIEW", "NOT CHECKED IN"],
+];
+
+export default function AdminPage() {
+  const [checkedIn, setCheckedIn] = useState(false);
+  return <main className="admin-shell shell"><div className="admin-head"><div><span className="eyebrow">WORLD BAMBOO DAY · ADMINISTRATION</span><h1>The event, operationally visible.</h1><p>Demo dataset only. Production access will require authenticated roles and audited actions.</p></div><span className="demo-badge">DEMO DATASET</span></div><div className="metric-grid">{[["126","Total registrations"],["98","Confirmed"],["387","Bamboo commitments"],["₱—","Confirmed collections"],["21","Awaiting payment"],["7","Payment review"],["34","Organizations"],[checkedIn ? "1" : "0","Checked in"]].map(([value,label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><section className="admin-section"><div className="admin-section-head"><div><span>01</span><h2>Registrations</h2></div><button>Export preview</button></div><div className="table-wrap"><table><thead><tr><th>Reference</th><th>Participant</th><th>Organization</th><th>Municipality</th><th>Bamboo</th><th>Payment</th><th>Attendance</th></tr></thead><tbody>{registrations.map((row) => <tr key={row[0]}>{row.map((value,i) => <td key={`${row[0]}-${i}`}><span className={i === 5 ? "table-status" : ""}>{value}</span></td>)}</tr>)}</tbody></table></div></section><div className="admin-two"><section className="admin-section"><div className="admin-section-head"><div><span>02</span><h2>Payment exceptions</h2></div></div><div className="exception"><span>PAYMENT REVIEW REQUIRED</span><strong>WBD26-0321</strong><div><p>Expected amount</p><b>₱500</b></div><div><p>Received amount</p><b>₱1,000</b></div><small>Example only · amount mismatch</small></div></section><section className="admin-section"><div className="admin-section-head"><div><span>03</span><h2>Event check-in</h2></div></div><div className="checkin-demo"><span className="eyebrow">SCAN EVENT QR</span><h3>Maria Santos</h3><p>ABC Cooperative · 3 bamboo units</p><strong>Payment confirmed</strong><button className="button primary" onClick={() => setCheckedIn(true)}>{checkedIn ? "✓ Checked in · 8:34 AM" : "Confirm check-in"}</button></div></section></div><section className="admin-section"><div className="admin-section-head"><div><span>04</span><h2>Bamboo commitments</h2></div></div><div className="bamboo-stats">{[["642","Requested"],["67","Reserved"],["511","Allocated"],["0","Planted"],["489","Available"]].map(([v,l]) => <div key={l}><strong>{v}</strong><span>{l}</span></div>)}</div><p className="microcopy">Inventory and planting-unit tracking remain proposed until the organizers confirm the event mechanics.</p></section></main>;
+}
