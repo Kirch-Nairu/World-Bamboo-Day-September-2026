@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./responsive.css";
 import { SiteHeader } from "@/components/site-header";
 import { ProposalNotes } from "@/components/proposal-notes";
 
