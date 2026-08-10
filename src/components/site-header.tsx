@@ -12,8 +12,8 @@ export function SiteHeader() {
   return (
     <>
       <div className="proposal-banner">
-        <span>INTERACTIVE DRAFT PROPOSAL</span>
-        <span className="proposal-banner-detail">No real registrations or payments are accepted.</span>
+        <span>INTERACTIVE DRAFT + LOCAL PILOT</span>
+        <span className="proposal-banner-detail">Static QR pilot is for controlled testing only — not official collections.</span>
       </div>
       <header className="site-header shell">
         <Link href="/" className="brand" aria-label="World Bamboo Day 2026 home">
@@ -23,13 +23,16 @@ export function SiteHeader() {
 
         <nav className="main-nav desktop-nav" aria-label="Primary navigation">
           {links.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}
+          <Link href="/pilot/register">Pilot</Link>
         </nav>
-        <Link href="/register" className="header-cta desktop-cta">Preview registration →</Link>
+        <Link href="/pilot/register" className="header-cta desktop-cta">Open live pilot →</Link>
 
         <details className="mobile-menu">
           <summary aria-label="Open navigation">Menu</summary>
           <nav aria-label="Mobile navigation">
             {links.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}
+            <Link href="/pilot/register">Live static-QR pilot</Link>
+            <Link href="/pilot/admin">Pilot admin</Link>
             <Link href="/proposal">Proposal board</Link>
           </nav>
         </details>

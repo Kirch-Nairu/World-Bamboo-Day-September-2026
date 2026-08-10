@@ -1,0 +1,32 @@
+@host = http://localhost:5090
+@adminKey = local-pilot-only-change-me
+
+### Health
+GET {{host}}/api/health
+
+### Pilot config
+GET {{host}}/api/pilot/config
+
+### Create registration
+POST {{host}}/api/registrations
+Content-Type: application/json
+
+{
+  "fullName": "Pilot Participant",
+  "email": "pilot@example.com",
+  "mobile": "09123456789",
+  "municipality": "Loboc, Bohol",
+  "organization": "Demo Organization",
+  "category": "Individual",
+  "participation": "Bamboo commitment",
+  "bambooUnits": 2,
+  "notes": "Static QR pilot"
+}
+
+### Admin dashboard
+GET {{host}}/api/admin/dashboard
+X-Pilot-Admin-Key: {{adminKey}}
+
+### Admin registrations
+GET {{host}}/api/admin/registrations
+X-Pilot-Admin-Key: {{adminKey}}

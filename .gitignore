@@ -7,3 +7,13 @@ out/
 .vercel/
 *.log
 .DS_Store
+
+# Local-only payment QR overrides
+public/pilot-payment-qr.*
+
+# .NET pilot backend
+**/bin/
+**/obj/
+**/pilot.db
+**/pilot.db-shm
+**/pilot.db-wal
