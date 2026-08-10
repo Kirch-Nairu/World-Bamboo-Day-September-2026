@@ -38,6 +38,7 @@ export default function RegisterPage() {
     setStep(0); setForm(initial); setPaymentState("idle"); setPaymentMethod("qrph");
     try { window.localStorage.removeItem(draftKey); } catch {}
   }
+  function choosePayment(method: PaymentMethod) { setPaymentMethod(method); setPaymentState("idle"); }
   const completed = useMemo(()=>paymentState==="success",[paymentState]);
   const progress = ((step + 1) / steps.length) * 100;
 
@@ -156,10 +157,10 @@ export default function RegisterPage() {
               <div className="payment-summary"><div><span>REGISTRATION</span><strong>{reference}</strong></div><div><span>AMOUNT DUE</span><strong>TO BE CONFIRMED</strong></div><div><span>STATUS</span><strong>{paymentState==="idle"?"AWAITING PAYMENT":paymentState.toUpperCase()}</strong></div></div>
 
               <div className="payment-methods">
-                <PaymentButton method="qrph" selected={paymentMethod} setMethod={setPaymentMethod} title="QR PH" text="Preferred automated flow" />
-                <PaymentButton method="gcash" selected={paymentMethod} setMethod={setPaymentMethod} title="GCASH" text="Hosted checkout / redirect" />
-                <PaymentButton method="maya" selected={paymentMethod} setMethod={setPaymentMethod} title="MAYA" text="Hosted checkout / redirect" />
-                <PaymentButton method="manual" selected={paymentMethod} setMethod={setPaymentMethod} title="MANUAL" text="Institutional fallback" />
+                <PaymentButton method="qrph" selected={paymentMethod} setMethod={choosePayment} title="QR PH" text="Preferred automated flow" />
+                <PaymentButton method="gcash" selected={paymentMethod} setMethod={choosePayment} title="GCASH" text="Hosted checkout / redirect" />
+                <PaymentButton method="maya" selected={paymentMethod} setMethod={choosePayment} title="MAYA" text="Hosted checkout / redirect" />
+                <PaymentButton method="manual" selected={paymentMethod} setMethod={choosePayment} title="MANUAL" text="Institutional fallback" />
               </div>
 
               <div className="payment-experience">
@@ -202,7 +203,7 @@ function WizardActions({onBack,onNext,nextLabel}:{onBack?:()=>void;onNext?:()=>v
 function ReviewRow({label,value,status}:{label:string;value:string;status?:string}) { return <div><span>{label}</span><strong>{value}</strong>{status&&<em data-status={status}>{status}</em>}</div>; }
 function SidecarRow({label,value}:{label:string;value:string}) { return <div className="sidecar-row"><span>{label}</span><strong>{value}</strong></div>; }
 function DemoQr({label}:{label:string}) { return <div className="demo-qr" aria-label={label}><div className="qr-pattern" /><span>{label}</span></div>; }
-function PaymentButton({method,selected,setMethod,title,text}:{method:PaymentMethod;selected:PaymentMethod;setMethod:(m:PaymentMethod)=>void;title:string;text:string}) { return <button type="button" className={selected===method?"selected":""} onClick={()=>{setMethod(method);setPaymentState("idle");}}><strong>{title}</strong><span>{text}</span></button>; }
+function PaymentButton({method,selected,setMethod,title,text}:{method:PaymentMethod;selected:PaymentMethod;setMethod:(m:PaymentMethod)=>void;title:string;text:string}) { return <button type="button" className={selected===method?"selected":""} onClick={()=>setMethod(method)}><strong>{title}</strong><span>{text}</span></button>; }
 function PaymentStatus({state}:{state:PaymentState}) {
   const copy: Record<PaymentState,[string,string]> = {
     idle:["Awaiting payment", "No payment has been initiated in the demo."],
