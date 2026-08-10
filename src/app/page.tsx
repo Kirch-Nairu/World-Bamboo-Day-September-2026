@@ -17,6 +17,26 @@ const activities = [
   "Partner activities",
 ];
 
+const participationModes = [
+  ["Individual participant", "Join the public celebration and the activities approved by the organizing committee."],
+  ["Bamboo commitment", "Indicate one or more bamboo planting units to support or personally participate with."],
+  ["Organization / delegation", "Register an affiliation or delegation direction while bulk registration mechanics remain under discovery."],
+];
+
+const eventExperience = [
+  ["Arrival & verification", "Participants present the event QR or registration reference. Staff verify the record before check-in."],
+  ["Activity allocation", "Where needed, the system can show an assigned planting site, activity group or time batch."],
+  ["Bamboo / materials release", "If the program requires unit allocation, staff can record which bamboo units or materials are released."],
+  ["Attendance & impact", "Organizers can distinguish registered participants from actual attendance and final activity outputs."],
+];
+
+const impactMetrics = [
+  ["Participants", "Confirmed and actual attendees"],
+  ["Organizations", "Participating institutions and groups"],
+  ["Bamboo commitments", "Requested, allocated and completed units"],
+  ["Payments", "Confirmed collections and exceptions, when applicable"],
+];
+
 export default function Home() {
   return (
     <main>
@@ -28,7 +48,7 @@ export default function Home() {
             <span className="event-kicker">WORLD BAMBOO DAY 2026 · BOHOL, PHILIPPINES</span>
             <h1>Grow what comes next.</h1>
             <p>
-              A mobile-first draft direction for the World Bamboo Day celebration in Loboc, Bohol — connecting public participation, bamboo commitments, registration and event-day attendance.
+              A mobile-first draft direction for the World Bamboo Day celebration in Loboc, Bohol — connecting public participation, bamboo commitments, registration, approved payment and event-day attendance.
             </p>
             <div className="event-hero-actions">
               <Link className="button hero-primary" href="/register">Preview registration →</Link>
@@ -46,11 +66,20 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="event-purpose-strip" aria-label="Proposal purpose">
+        <div className="shell">
+          <div className="purpose-intro"><span>PROPOSED DIGITAL ROLE</span><strong>One participant journey from event discovery to registration, payment confirmation and event-day attendance.</strong></div>
+          <div className="purpose-stat"><span>PUBLIC SIDE</span><strong>Mobile-first registration</strong></div>
+          <div className="purpose-stat"><span>ORGANIZER SIDE</span><strong>Operational visibility</strong></div>
+          <div className="purpose-stat"><span>PROPOSAL MODE</span><strong>Live notes + decisions</strong></div>
+        </div>
+      </section>
+
       <section id="about" className="section shell compact-section">
         <SectionHead number="01" kicker="World Bamboo Day" title="Bamboo for Bohol. Growth with purpose." />
         <div className="split-copy">
           <p className="section-lead">This proposal treats World Bamboo Day as more than an information page. The intended system connects public participation, registration, the approved payment process, bamboo commitments and event-day attendance.</p>
-          <p>Quantitative environmental claims, local bamboo statistics and final program language remain placeholders until organizers provide approved content.</p>
+          <p>Quantitative environmental claims, local bamboo statistics, organizer wording and final activity descriptions remain placeholders until approved material is provided.</p>
         </div>
         <div className="why-grid">
           {why.map(([title, text], i) => (
@@ -89,16 +118,27 @@ export default function Home() {
         <SectionHead number="03" kicker="Participation" title="From interest to confirmation." />
         <div className="journey-list">
           {[
-            ["Register", "Provide participant and organization information."],
-            ["Participate", "Choose the applicable participation or bamboo commitment."],
-            ["Pay", "Complete payment through the official approved channel when required."],
-            ["Confirm", "Receive a registration reference and event check-in QR."],
-            ["Join", "Present the event QR on September 18 and participate in the activity."],
+            ["Register", "Provide the minimum participant and organization information needed for the event."],
+            ["Participate", "Choose the applicable participation or bamboo commitment once official mechanics are approved."],
+            ["Pay", "Complete payment through the official approved channel when payment is required."],
+            ["Confirm", "Receive a registration reference and separate event check-in QR."],
+            ["Join", "Present the event QR on September 18 and participate in the assigned activity."],
           ].map(([title, text], i) => (
             <div key={title}>
               <span>{String(i + 1).padStart(2, "0")}</span>
               <h3>{title}</h3>
               <p>{text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="participation-modes">
+          {participationModes.map(([title, text], i) => (
+            <div className="participation-mode" key={title}>
+              <span>{String(i + 1).padStart(2, "0")}</span>
+              <strong>{title}</strong>
+              <p>{text}</p>
+              <em>PROPOSED</em>
             </div>
           ))}
         </div>
@@ -110,11 +150,12 @@ export default function Home() {
           <div>
             <p className="section-lead">The prototype simulates the complete proposed participant path without sending personal information or real money anywhere.</p>
             <ul className="plain-list">
-              <li>Participant information</li>
-              <li>Participation / bamboo commitment</li>
-              <li>Review and consent</li>
-              <li>Mock QR Ph / wallet payment</li>
-              <li>Confirmation and event QR</li>
+              <li>Participant information with mobile-first fields</li>
+              <li>Participation / bamboo commitment selection</li>
+              <li>Review, consent and clear unresolved items</li>
+              <li>Mock QR Ph, GCash, Maya and manual payment paths</li>
+              <li>Payment verification state and event QR confirmation</li>
+              <li>Browser-local draft save for meeting/demo continuity</li>
             </ul>
             <Link href="/register" className="text-link">Launch the registration prototype →</Link>
           </div>
@@ -130,21 +171,79 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section shell compact-section">
+        <SectionHead number="05" kicker="Event-day Experience" title="Designed for the point of arrival." />
+        <div className="event-experience-grid">
+          {eventExperience.map(([title, text], i) => (
+            <article className="experience-card" key={title}>
+              <span>{String(i + 1).padStart(2, "0")}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="readiness-panel">
+          <div>
+            <span className="eyebrow">BEFORE REGISTRATION OPENS</span>
+            <h3>What organizers still need to lock.</h3>
+            <p>The application can be built around these decisions, but the public experience should not publish them until they are formally confirmed.</p>
+          </div>
+          <div className="readiness-list">
+            {[
+              ["Venue", "Exact assembly / planting site"],
+              ["Capacity", "Maximum participants and activity limits"],
+              ["Payment", "Amount, legal recipient and approved channel"],
+              ["Program", "Final activities, schedule and participant instructions"],
+              ["Operations", "Check-in staffing, connectivity and contingency process"],
+            ].map(([label, value]) => <div className="readiness-item" key={label}><span>{label}</span><strong>{value}</strong></div>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section compact-section impact-section">
+        <div className="shell">
+          <SectionHead number="06" kicker="Impact & Reporting" title="Not just registrations. Actual event outputs." />
+          <div className="impact-grid">
+            {impactMetrics.map(([title, text]) => (
+              <article className="impact-metric" key={title}>
+                <span>PROPOSED METRIC</span>
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+          <p className="impact-note">The final reporting model should follow the organizer's actual program objectives. The prototype does not claim that every proposed metric will be required.</p>
+        </div>
+      </section>
+
       <section id="faq" className="section shell compact-section">
-        <SectionHead number="05" kicker="Frequently Asked Questions" title="What participants should know." />
+        <SectionHead number="07" kicker="Frequently Asked Questions" title="What participants should know." />
         <div className="faq-list">
           {[
             ["Is registration already open?", "No. This build is an interactive draft proposal. It accepts no real registrations."],
             ["How much does participation cost?", "To be confirmed by the organizing committee. The prototype deliberately does not invent a fee."],
             ["How will payment work?", "The preferred production direction is an approved institutional payment facility or authorized gateway with automated verification, with a manual institutional fallback."],
             ["Where exactly is the activity?", "Loboc, Bohol is confirmed. The exact venue or planting site remains to be confirmed."],
-            ["Can organizations participate?", "The prototype includes affiliation and organization categories, but bulk delegation mechanics are not yet part of the MVP."],
+            ["Can organizations participate?", "The prototype includes affiliation and organization categories. Final group or delegation mechanics still require approval."],
+            ["What happens after payment?", "The production direction is to verify payment server-side, confirm the registration and issue a separate event check-in QR."],
+            ["What if mobile internet is weak on event day?", "The operational plan should include mobile-data backup and an offline or printed participant roster even if the primary check-in flow is online."],
           ].map(([q, a], i) => (
             <article key={q}>
               <span>{String(i + 1).padStart(2, "0")}</span>
               <div><h3>{q}</h3><p>{a}</p></div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="final-cta">
+        <div className="shell">
+          <div>
+            <span className="eyebrow">INTERACTIVE PROPOSAL</span>
+            <h2>See the proposed participant journey before we lock the production requirements.</h2>
+          </div>
+          <Link className="button" href="/register">Preview registration →</Link>
         </div>
       </section>
 
