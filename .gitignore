@@ -8,6 +8,9 @@ out/
 *.log
 .DS_Store
 
+# Local-only payment QR overrides
+public/pilot-payment-qr.*
+
 # .NET pilot backend
 **/bin/
 **/obj/
