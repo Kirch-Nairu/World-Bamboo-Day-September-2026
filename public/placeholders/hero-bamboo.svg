@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">World Bamboo Day hero image placeholder</title>
+  <desc id="desc">Abstract bamboo forest placeholder to be replaced by an approved event photograph.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d2c20"/>
+      <stop offset="0.52" stop-color="#31573a"/>
+      <stop offset="1" stop-color="#8b9d61"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1df9b" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#f1df9b" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1260" cy="170" r="310" fill="url(#sun)"/>
+  <g opacity=".55" fill="#173825">
+    <rect x="170" y="-80" width="54" height="1190" rx="24" transform="rotate(-4 197 500)"/>
+    <rect x="390" y="-120" width="42" height="1190" rx="20" transform="rotate(3 411 500)"/>
+    <rect x="650" y="-70" width="66" height="1180" rx="28" transform="rotate(-2 683 500)"/>
+    <rect x="940" y="-90" width="48" height="1190" rx="22" transform="rotate(5 964 500)"/>
+    <rect x="1210" y="-130" width="62" height="1210" rx="26" transform="rotate(-3 1241 500)"/>
+    <rect x="1450" y="-60" width="44" height="1130" rx="20" transform="rotate(3 1472 500)"/>
+  </g>
+  <g opacity=".42" stroke="#d0d9a2" stroke-width="16" stroke-linecap="round">
+    <path d="M210 280c-110-80-160-120-230-125M216 390c110-78 170-96 250-92M406 210c-88-68-145-82-220-80M680 330c110-88 188-108 280-95M968 250c-110-78-190-90-280-66M1245 365c122-78 210-84 300-52M1472 235c-95-62-165-75-248-54"/>
+  </g>
+  <g fill="#d0d9a2" opacity=".38">
+    <ellipse cx="63" cy="151" rx="82" ry="24" transform="rotate(22 63 151)"/>
+    <ellipse cx="426" cy="302" rx="96" ry="28" transform="rotate(-18 426 302)"/>
+    <ellipse cx="848" cy="236" rx="88" ry="25" transform="rotate(17 848 236)"/>
+    <ellipse cx="1402" cy="315" rx="110" ry="30" transform="rotate(-14 1402 315)"/>
+  </g>
+  <rect y="705" width="1600" height="295" fill="#091a14" fill-opacity=".34"/>
+  <g fill="#f6f2e8" font-family="Arial, Helvetica, sans-serif">
+    <text x="84" y="848" font-size="30" font-weight="700" letter-spacing="4">IMAGE PLACEHOLDER</text>
+    <text x="84" y="899" font-size="23" opacity=".8">Replace with approved World Bamboo Day / Loboc event photography.</text>
+  </g>
+</svg>
